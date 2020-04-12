@@ -13,7 +13,7 @@ import com.curso.exemplo.repositories.CategoriaRepository;
 public class CategoriaService {
 
 	@Autowired
-	CategoriaRepository categoriaRepository;
+	private CategoriaRepository categoriaRepository;
 	
 	public Categoria buscarCategoria(Integer id) throws Exception{
 		

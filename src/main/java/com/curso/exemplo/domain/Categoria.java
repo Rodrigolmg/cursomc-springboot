@@ -10,12 +10,14 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@RequiredArgsConstructor
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class Categoria implements Serializable{
 	
@@ -24,6 +26,8 @@ public class Categoria implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@NonNull
 	private String nome;
 	
 	
