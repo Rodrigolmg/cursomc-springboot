@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +21,8 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Endereco implements Serializable {
+	
+	private static final long serialVersionUID = 5297820284322845409L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +43,15 @@ public class Endereco implements Serializable {
 	@NonNull
 	private String cep;
 
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	@NonNull
 	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "cidade_id")
+	@NonNull
+	private Cidade cidade;
 	
 	@Override
 	public int hashCode() {
