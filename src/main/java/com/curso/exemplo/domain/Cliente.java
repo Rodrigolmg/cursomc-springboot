@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import com.curso.exemplo.domain.enums.TipoCliente;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
@@ -51,6 +52,7 @@ public class Cliente implements Serializable {
 	private Set<String> telefones = new HashSet<>();
 	
 	@OneToMany(mappedBy = "cliente")
+	@JsonBackReference
 	private List<Pedido> pedidos = new ArrayList<>();
 	
 	public Cliente(String nome, String email, String cpfOuCnpj, TipoCliente tipo) {

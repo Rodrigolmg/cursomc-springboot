@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,6 +21,7 @@ public class ItemPedido implements Serializable {
 	
 	@EqualsAndHashCode.Include
 	@EmbeddedId
+	@JsonIgnore
 	private ItemPedidoPK id = new ItemPedidoPK();
 	
 	private Double desconto;
@@ -33,7 +36,8 @@ public class ItemPedido implements Serializable {
 		this.quantidade = quantidade;
 		this.preco = preco;
 	}
-
+	
+	@JsonIgnore
 	public Pedido getPedido() {
 		return id.getPedido();
 	}
