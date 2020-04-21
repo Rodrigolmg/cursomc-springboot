@@ -49,7 +49,7 @@ public class Produto implements Serializable{
 	@NonNull
 	private Double preco;
 	
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(
 		name = "PRODUTO_CATEGORIA",

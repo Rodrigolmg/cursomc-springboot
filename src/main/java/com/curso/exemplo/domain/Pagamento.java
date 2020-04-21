@@ -3,8 +3,6 @@ package com.curso.exemplo.domain;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -13,13 +11,9 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.curso.exemplo.domain.enums.EstadoPagamento;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AccessLevel;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
@@ -37,7 +31,7 @@ public abstract class Pagamento implements Serializable {
 	private Integer estado;
 	
 	@OneToOne
-	@JsonBackReference
+	@JsonIgnore
 	@JoinColumn(name = "pedido_id")
 	@MapsId
 	private Pedido pedido;

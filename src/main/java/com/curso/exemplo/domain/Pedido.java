@@ -16,16 +16,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.EqualsAndHashCode.Include;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @RequiredArgsConstructor
 @NoArgsConstructor
@@ -47,12 +43,10 @@ public class Pedido implements Serializable {
 	private Date instante;
 
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
-	@JsonManagedReference
 	private Pagamento pagamento;
 	
 	@NonNull
 	@ManyToOne
-	@JsonManagedReference
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
