@@ -21,7 +21,7 @@ public class EnderecoResource {
 	EnderecoService enderecoService;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> consultar(@PathVariable Integer id) throws Exception{
+	public ResponseEntity<Endereco> consultar(@PathVariable Integer id) throws Exception{
 		Endereco enderecoConsultado = enderecoService.buscarEndereco(id);
 		return ResponseEntity.ok(enderecoConsultado);
 	}

@@ -35,4 +35,8 @@ public class CategoriaService {
 	public Categoria cadastrarCategoria(Categoria categoria) {
 		return categoriaRepository.save(categoria);
 	}
+	
+	public Categoria atualizarCategoria(Categoria categoria) {
+		return categoriaRepository.save(categoria);
+	}
 }

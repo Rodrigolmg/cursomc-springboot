@@ -21,7 +21,7 @@ public class EstadoResource {
 	EstadoService estadoService;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> consultar(@PathVariable("id") Integer id) throws Exception{
+	public ResponseEntity<Estado> consultar(@PathVariable("id") Integer id) throws Exception{
 		Estado categoriaConsultada = estadoService.buscarEstado(id);
 		return ResponseEntity.ok(categoriaConsultada);
 	}

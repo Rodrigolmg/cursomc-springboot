@@ -21,7 +21,7 @@ public class CidadeResource {
 	CidadeService cidadeService;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> consultar(@PathVariable("id") Integer id) throws Exception{
+	public ResponseEntity<Cidade> consultar(@PathVariable("id") Integer id) throws Exception{
 		Cidade cidadeConsultada = cidadeService.buscarCidade(id);
 		return ResponseEntity.ok(cidadeConsultada);
 	}

@@ -20,7 +20,7 @@ public class PedidoResource {
 	PedidoService pedidoService;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> consultar(@PathVariable Integer id) throws Exception{
+	public ResponseEntity<Pedido> consultar(@PathVariable Integer id) throws Exception{
 		Pedido pedidoConsultado = pedidoService.buscarPedido(id);
 		return ResponseEntity.ok(pedidoConsultado);
 	}

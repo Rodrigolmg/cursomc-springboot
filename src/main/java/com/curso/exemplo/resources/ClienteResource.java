@@ -21,7 +21,7 @@ public class ClienteResource {
 	ClienteService clienteService;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<?> consultar(@PathVariable Integer id) throws Exception{
+	public ResponseEntity<Cliente> consultar(@PathVariable Integer id) throws Exception{
 		Cliente clienteConsultado = clienteService.buscarCliente(id);
 		return ResponseEntity.ok(clienteConsultado);
 	}
