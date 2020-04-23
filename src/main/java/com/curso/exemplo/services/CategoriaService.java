@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.curso.exemplo.domain.Categoria;
+import com.curso.exemplo.services.exceptions.DataIntegrityException;
 import com.curso.exemplo.services.exceptions.ObjectNotFoundException;
 import com.curso.exemplo.repositories.CategoriaRepository;
 
@@ -38,5 +40,14 @@ public class CategoriaService {
 	
 	public Categoria atualizarCategoria(Categoria categoria) {
 		return categoriaRepository.save(categoria);
+	}
+
+	public void delete(Integer id) {
+		// TODO Auto-generated method stub
+		try {
+			categoriaRepository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possível uma categoria que possuin produtos.");
+		}
 	}
 }
