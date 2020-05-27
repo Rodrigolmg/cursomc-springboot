@@ -2,6 +2,7 @@ package com.curso.exemplo.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.curso.exemplo.domain.Categoria;
+import com.curso.exemplo.dto.CategoriaDTO;
 import com.curso.exemplo.services.CategoriaService;
 
 @RestController
@@ -34,7 +36,7 @@ public class CategoriaResource {
 	@GetMapping
 	public ResponseEntity<?> listar() throws Exception{
 		
-		List<Categoria> categorias = categoriaService.listarCategorias();
+		List<CategoriaDTO> categorias = categoriaService.listarCategorias().stream().map(cat -> new CategoriaDTO(cat)).collect(Collectors.toList());
 		
 		return ResponseEntity.ok(categorias);
 	}
